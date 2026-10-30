@@ -15,3 +15,13 @@ jobs:
         run: ./retry-429/test_retry.sh
       - name: spring-ai-chat (compile)
         run: mvn -B -q -f spring-ai-chat/pom.xml compile
+      - name: stream-sse
+        run: |
+          pip install -q -r stream-sse/requirements.txt
+          ./stream-sse/test_stream.sh
+      - name: token-costs
+        working-directory: token-costs
+        run: |
+          pip install -q -r requirements.txt
+          npm ci
+          python -m unittest -v

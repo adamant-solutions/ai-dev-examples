@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Streaming chat</title>
+<form id="f">
+  <textarea id="prompt" rows="3" cols="60">Why is the sky blue?</textarea><br>
+  <button id="send">Send</button> <button id="stop" type="button" disabled>Stop</button>
+</form>
+<pre id="out" style="white-space: pre-wrap"></pre>
+<script type="module">
+  import { streamChat } from './sse-client.js';
+
+  const out = document.getElementById('out');
+  const send = document.getElementById('send');
+  const stop = document.getElementById('stop');
+  let controller;
+
+  document.getElementById('f').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    out.textContent = '';
+    controller = new AbortController();
+    send.disabled = true; stop.disabled = false;
+    try {
+      const usage = await streamChat('/api/chat/stream', document.getElementById('prompt').value, {
+        onToken: (t) => out.append(t), // append text nodes: never innerHTML with model output
+        signal: controller.signal,
+      });
+      out.append(`\n\n[${usage.output_tokens ?? '?'} tokens]`);
+    } catch (err) {
+      out.append(err.name === 'AbortError' ? '\n\n[stopped]' : `\n\n[${err.message}]`);
+    } finally {
+      send.disabled = false; stop.disabled = true;
+    }
+  });
+  stop.addEventListener('click', () => controller?.abort());
+</script>
+</html>
