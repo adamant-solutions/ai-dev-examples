@@ -1,0 +1,5 @@
+target/
+__pycache__/
+node_modules/
+*.class
+.DS_Store
