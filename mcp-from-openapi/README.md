@@ -2,7 +2,7 @@
 
 Article: https://tools.adamant-solutions.com/blog/mcp-server-from-openapi/
 
-- `openapi.json`: an OpenAPI 3.1 description of a small orders API with five operations (three reads, a refund, a delete, an export).
+- `openapi.json`: an OpenAPI 3.1 description of a small orders API with six operations (three reads, a refund, a delete, an export).
 - `server.py`: a low-level MCP `Server` that turns only three allow-listed GET operations into tools. Input schemas come from the OpenAPI parameters with `additionalProperties: false`; arguments are validated with `jsonschema` before any HTTP call; path values are URL-encoded; the base URL and the API token belong to the server; responses are reduced to allow-listed fields; upstream errors are not forwarded; a simple rate limit.
 - `fake_api.py`: a standard-library HTTP server that implements the API and records every request.
 - `test_server.py`: tests with the official SDK `Client`, in memory and over Streamable HTTP: malicious and invalid arguments, operations outside the allow-list, leaked fields, upstream errors, rate limit. No API key, no network.
