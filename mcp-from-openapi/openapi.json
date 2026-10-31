@@ -1,0 +1,79 @@
+{
+  "openapi": "3.1.0",
+  "info": {"title": "Orders API (fake, for tests)", "version": "1.0.0"},
+  "components": {
+    "securitySchemes": {"bearer": {"type": "http", "scheme": "bearer"}}
+  },
+  "security": [{"bearer": []}],
+  "paths": {
+    "/customers/{customer_id}": {
+      "get": {
+        "operationId": "getCustomer",
+        "summary": "Get one customer by id.",
+        "parameters": [
+          {"name": "customer_id", "in": "path", "required": true,
+           "description": "Customer id, e.g. C-0001",
+           "schema": {"type": "string", "pattern": "^C-[0-9]{4}$"}}
+        ],
+        "responses": {"200": {"description": "The customer"}, "404": {"description": "Not found"}}
+      },
+      "delete": {
+        "operationId": "deleteCustomer",
+        "summary": "Delete a customer and all their data.",
+        "parameters": [
+          {"name": "customer_id", "in": "path", "required": true,
+           "schema": {"type": "string", "pattern": "^C-[0-9]{4}$"}}
+        ],
+        "responses": {"204": {"description": "Deleted"}}
+      }
+    },
+    "/orders": {
+      "get": {
+        "operationId": "listOrders",
+        "summary": "List the orders of one customer, newest first.",
+        "parameters": [
+          {"name": "customer_id", "in": "query", "required": true,
+           "description": "Customer id, e.g. C-0001",
+           "schema": {"type": "string", "pattern": "^C-[0-9]{4}$"}},
+          {"name": "status", "in": "query", "required": false,
+           "description": "Only orders with this status",
+           "schema": {"type": "string", "enum": ["processing", "shipped", "delivered"]}},
+          {"name": "limit", "in": "query", "required": false,
+           "description": "Maximum number of orders (1-20)",
+           "schema": {"type": "integer", "minimum": 1, "maximum": 20}}
+        ],
+        "responses": {"200": {"description": "A list of orders"}}
+      }
+    },
+    "/orders/{order_id}": {
+      "get": {
+        "operationId": "getOrder",
+        "summary": "Get one order by id.",
+        "parameters": [
+          {"name": "order_id", "in": "path", "required": true,
+           "description": "Order id, e.g. A-1001",
+           "schema": {"type": "string", "pattern": "^A-[0-9]{4}$"}}
+        ],
+        "responses": {"200": {"description": "The order"}, "404": {"description": "Not found"}}
+      }
+    },
+    "/orders/{order_id}/refund": {
+      "post": {
+        "operationId": "refundOrder",
+        "summary": "Refund an order.",
+        "parameters": [
+          {"name": "order_id", "in": "path", "required": true,
+           "schema": {"type": "string", "pattern": "^A-[0-9]{4}$"}}
+        ],
+        "responses": {"200": {"description": "Refunded"}}
+      }
+    },
+    "/admin/export": {
+      "get": {
+        "operationId": "exportAllData",
+        "summary": "Export every customer and order as JSON.",
+        "responses": {"200": {"description": "Everything"}}
+      }
+    }
+  }
+}

@@ -45,3 +45,13 @@ jobs:
         run: |
           pip install -q -r requirements.txt
           python -m unittest -v
+      - name: prompt-injection
+        working-directory: prompt-injection
+        run: |
+          python -m unittest -v
+          node --test
+      - name: mcp-from-openapi
+        working-directory: mcp-from-openapi
+        run: |
+          pip install -q -r requirements.txt
+          python -m unittest -v

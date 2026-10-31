@@ -11,6 +11,8 @@ Each folder belongs to an article on the [Adamant Tools blog](https://tools.adam
 | [`token-costs`](token-costs/) | Python (tiktoken, anthropic, openai), JavaScript (js-tiktoken) | [Count tokens and estimate costs before calling a model](https://tools.adamant-solutions.com/blog/count-tokens-costs/) |
 | [`rag-pgvector`](rag-pgvector/) | Python (psycopg 3, pgvector), PostgreSQL 18 + pgvector 0.8, Ollama | [Minimal RAG with PostgreSQL and pgvector](https://tools.adamant-solutions.com/blog/rag-postgres-pgvector/) |
 | [`tool-calling`](tool-calling/) | Python (anthropic, openai) | [Tool calling explained with an example that runs](https://tools.adamant-solutions.com/blog/tool-calling-basics/) |
+| [`prompt-injection`](prompt-injection/) | Python, JavaScript (no dependencies) | [Prompt injection: practical defenses you can test](https://tools.adamant-solutions.com/blog/prompt-injection-defenses/) |
+| [`mcp-from-openapi`](mcp-from-openapi/) | Python (mcp 2.3, jsonschema) | [Expose a REST API as an MCP server, safely](https://tools.adamant-solutions.com/blog/mcp-server-from-openapi/) |
 
 ## Rules for every example
 - Library versions are pinned and checked on the day the article is written.
