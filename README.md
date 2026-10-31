@@ -9,6 +9,8 @@ Each folder belongs to an article on the [Adamant Tools blog](https://tools.adam
 | [`retry-429`](retry-429/) | Python, Node.js, Java (no dependencies) | [HTTP 429 from AI APIs: retry with backoff and Retry-After](https://tools.adamant-solutions.com/blog/retry-429-retry-after/) |
 | [`stream-sse`](stream-sse/) | Python (FastAPI 0.162), browser JavaScript | [Stream an LLM answer to the browser with Server-Sent Events](https://tools.adamant-solutions.com/blog/stream-llm-sse-browser/) |
 | [`token-costs`](token-costs/) | Python (tiktoken, anthropic, openai), JavaScript (js-tiktoken) | [Count tokens and estimate costs before calling a model](https://tools.adamant-solutions.com/blog/count-tokens-costs/) |
+| [`rag-pgvector`](rag-pgvector/) | Python (psycopg 3, pgvector), PostgreSQL 18 + pgvector 0.8, Ollama | [Minimal RAG with PostgreSQL and pgvector](https://tools.adamant-solutions.com/blog/rag-postgres-pgvector/) |
+| [`tool-calling`](tool-calling/) | Python (anthropic, openai) | [Tool calling explained with an example that runs](https://tools.adamant-solutions.com/blog/tool-calling-basics/) |
 
 ## Rules for every example
 - Library versions are pinned and checked on the day the article is written.

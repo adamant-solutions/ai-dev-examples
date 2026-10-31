@@ -3,6 +3,14 @@ on: [push, pull_request]
 jobs:
   examples:
     runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: pgvector/pgvector:0.8.7-pg18
+        env:
+          POSTGRES_PASSWORD: postgres
+        ports: ['5432:5432']
+        options: >-
+          --health-cmd pg_isready --health-interval 5s --health-timeout 5s --health-retries 10
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-java@v4
@@ -24,4 +32,16 @@ jobs:
         run: |
           pip install -q -r requirements.txt
           npm ci
+          python -m unittest -v
+      - name: rag-pgvector
+        working-directory: rag-pgvector
+        env:
+          DATABASE_URL: postgresql://postgres:postgres@localhost:5432/postgres
+        run: |
+          pip install -q -r requirements.txt
+          python -m unittest -v
+      - name: tool-calling
+        working-directory: tool-calling
+        run: |
+          pip install -q -r requirements.txt
           python -m unittest -v
