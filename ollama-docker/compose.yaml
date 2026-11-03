@@ -1,0 +1,15 @@
+services:
+  ollama:
+    image: ollama/ollama:0.40.14
+    ports:
+      - "127.0.0.1:11434:11434"   # reachable only from this machine
+    volumes:
+      - ollama:/root/.ollama      # models survive container recreation
+    environment:
+      OLLAMA_KEEP_ALIVE: "30m"    # default is 5m: keep the model in RAM longer
+      OLLAMA_NUM_PARALLEL: "1"    # default 1: parallel requests multiply the context memory
+      OLLAMA_MAX_QUEUE: "16"      # default 512: reject early instead of queueing for minutes
+    mem_limit: 8g                 # model + context must fit, or the container is OOM-killed
+    restart: unless-stopped
+volumes:
+  ollama:

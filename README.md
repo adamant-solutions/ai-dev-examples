@@ -13,6 +13,7 @@ Each folder belongs to an article on the [Adamant Tools blog](https://tools.adam
 | [`tool-calling`](tool-calling/) | Python (anthropic, openai) | [Tool calling explained with an example that runs](https://tools.adamant-solutions.com/blog/tool-calling-basics/) |
 | [`prompt-injection`](prompt-injection/) | Python, JavaScript (no dependencies) | [Prompt injection: practical defenses you can test](https://tools.adamant-solutions.com/blog/prompt-injection-defenses/) |
 | [`mcp-from-openapi`](mcp-from-openapi/) | Python (mcp 2.3, jsonschema) | [Expose a REST API as an MCP server, safely](https://tools.adamant-solutions.com/blog/mcp-server-from-openapi/) |
+| [`ollama-docker`](ollama-docker/) | Docker Compose, Ollama 0.40, Python (no dependencies) | [Ollama in Docker on a CPU-only server](https://tools.adamant-solutions.com/blog/ollama-docker-cpu/) |
 
 ## Rules for every example
 - Library versions are pinned and checked on the day the article is written.
