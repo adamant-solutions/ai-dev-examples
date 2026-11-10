@@ -58,3 +58,9 @@ jobs:
       - name: ollama-docker
         working-directory: ollama-docker
         run: python -m unittest -v
+      - name: timeouts
+        working-directory: timeouts
+        run: |
+          pip install -q -r requirements.txt
+          python -m unittest -v
+          node --test
