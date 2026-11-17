@@ -15,6 +15,7 @@ Each folder belongs to an article on the [Adamant Tools blog](https://tools.adam
 | [`mcp-from-openapi`](mcp-from-openapi/) | Python (mcp 2.3, jsonschema) | [Expose a REST API as an MCP server, safely](https://tools.adamant-solutions.com/blog/mcp-server-from-openapi/) |
 | [`ollama-docker`](ollama-docker/) | Docker Compose, Ollama 0.40, Python (no dependencies) | [Ollama in Docker on a CPU-only server](https://tools.adamant-solutions.com/blog/ollama-docker-cpu/) |
 | [`timeouts`](timeouts/) | Python (httpx 0.28), Node.js 22 (fetch) | [Timeouts and cancellation for model calls](https://tools.adamant-solutions.com/blog/llm-timeouts-cancellation/) |
+| [`structured-output`](structured-output/) | Python (pydantic 2.14) | [Structured JSON output from a model: schema, validation, bounded retry](https://tools.adamant-solutions.com/blog/structured-output-validation/) |
 
 ## Rules for every example
 - Library versions are pinned and checked on the day the article is written.
